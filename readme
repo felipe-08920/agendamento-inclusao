@@ -1,0 +1,114 @@
+```
+
+query para criar a tabela usuario
+
+CREATE TABLE users (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    email VARCHAR(100) UNIQUE NOT NULL,
+    cpf VARCHAR(14) UNIQUE NOT NULL,
+    password VARCHAR(255) NOT NULL
+);
+
+ALTER TABLE users ADD COLUMN telefone VARCHAR(20) NOT NULL;
+ALTER TABLE users ADD COLUMN tipo ENUM('Semed','Núcleo') NOT NULL;
+
+dados para testes: (Insira estes dados para quando acessar o login, já ter acesso)
+INSERT INTO users (name, email, cpf, password, telefone, tipo) VALUES
+('João Silva', 'admin.teste@teste.com', '123.456.789-00', '1q2w3e', '(11) 98765-4321', 'Semed'),
+Login:admin.teste@teste.com
+Senha:1q2w3e
+
+tabela atualizada usuárioscaso inicie o projeto, utilizar esse
+
+CREATE TABLE users (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    email VARCHAR(100) UNIQUE NOT NULL,
+    cpf VARCHAR(14) UNIQUE NOT NULL,
+    telefone VARCHAR(20) NOT NULL,
+    tipo ENUM('Semed','Núcleo') NOT NULL,
+    password VARCHAR(255) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+
+
+query para criar a tabela agendamento
+
+CREATE TABLE agendamento (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    cid VARCHAR(20) NOT NULL,
+    profissional VARCHAR(50) NOT NULL,
+    nome_aluno VARCHAR(100) NOT NULL,
+    escola VARCHAR(100) NOT NULL,
+    turma VARCHAR(50) NOT NULL,
+    turno VARCHAR(20) NOT NULL,
+    data_nascimento DATE NOT NULL,
+    idade INT NOT NULL,
+    nome_responsavel VARCHAR(100) NOT NULL,
+    endereco VARCHAR(200) NOT NULL,
+    contato VARCHAR(15) NOT NULL,
+    responsavel_atendimento VARCHAR(100) NOT NULL,
+    data_solicitacao TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+ALTER TABLE`agendamento` ADD COLUMN status VARCHAR(20) NOT NULL;
+ALTER TABLE `agendamento` 
+ADD COLUMN `data_solicitacao` DATE NOT NULL DEFAULT CURRENT_DATE;
+ALTER TABLE agendamento MODIFY COLUMN data_solicitacao DATE NOT NULL;
+ALTER TABLE agendamento ADD lista_espera INT NOT NULL;
+
+query agendamento atualizada, caso for iniciar o projeto utilizar esse:
+
+CREATE TABLE agendamento (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    cid VARCHAR(20) NOT NULL,
+    profissional VARCHAR(50) NOT NULL,
+    nome_aluno VARCHAR(100) NOT NULL,
+    escola VARCHAR(100) NOT NULL,
+    turma VARCHAR(50) NOT NULL,
+    turno VARCHAR(20) NOT NULL,
+    data_nascimento DATE NOT NULL,
+    idade INT NOT NULL,
+    nome_responsavel VARCHAR(100) NOT NULL,
+    endereco VARCHAR(200) NOT NULL,
+    contato VARCHAR(15) NOT NULL,
+    responsavel_atendimento VARCHAR(100) NOT NULL,
+    status VARCHAR(20) NOT NULL,
+    data_solicitacao DATE NOT NULL DEFAULT CURRENT_DATE,
+    lista_espera INT NOT NULL DEFAULT 0
+);
+
+query para criar a tabela logs
+
+CREATE TABLE logs (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT NOT NULL,
+    action VARCHAR(255) NOT NULL,
+    details TEXT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES users(id)
+);
+
+query para tabela profissionais
+
+CREATE TABLE profissionais (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(255) NOT NULL,
+    especialidade VARCHAR(100) NOT NULL,
+    criado_em TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+ALTER TABLE profissionais ADD COLUMN horario VARCHAR(60) NOT NULL;
+
+caso criar do zero utilizar esta tabela:
+
+CREATE TABLE profissionais (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(255) NOT NULL,
+    especialidade VARCHAR(100) NOT NULL,
+    horario VARCHAR(60) NOT NULL,
+    criado_em TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+```

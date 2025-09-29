@@ -1,0 +1,47 @@
+header {
+  background-color: #18264f;
+  height: 125px;
+  padding: 0 1rem;
+  /* Adiciona um pouco de espaçamento horizontal */
+}
+
+.logo_semed {
+  width: 70px;
+}
+
+.container__imgs {
+  margin-left: 7rem;
+}
+
+.navbar a {
+  font-weight: bold;
+  text-decoration: none;
+  margin-right: 2rem;
+}
+
+.text-light {
+  color: white;
+}
+@media screen and (max-width: 576px) {
+  .navbar {
+    height: 150px;
+    /* Permite ajustar a altura para telas menores */
+    padding: 1rem;
+  }
+
+  .logo_semed {
+    height: 150px;
+    width: 150px;
+  }
+
+  .menu {
+    display: none;
+  }
+.text-light {
+  color: black;
+}
+  .container__imgs {
+    margin-left: 1.5rem;
+    /* Reduz a margem em telas menores */
+  }
+}
