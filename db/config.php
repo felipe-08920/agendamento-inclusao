@@ -3,9 +3,7 @@ function connectDatabase()
 {
     $server = 'localhost';
     $dbname = 'agendamento-inclusao';
-    // $user = 'inclu_db';
     $user = 'root';
-    // $password = '$u97iW2m1';
     $password = '';
 
     try {
